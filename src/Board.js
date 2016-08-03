@@ -168,12 +168,34 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var rows = this.rows();
+      var result = false;
+      var count = 0;
+      var diaIndex = majorDiagonalColumnIndexAtFirstRow;
+
+      rows.forEach(function(row, index) {
+        if (row[diaIndex++]) {
+          count++;
+        }
+
+        if (count > 1) {
+          result = true;
+        }
+
+      });
+      return result;
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var rows = this.rows();
+      var i = 1 - rows.length;
+      for (i; i < rows.length; i++) {
+        if (this.hasMajorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+      return false;
     },
 
 
