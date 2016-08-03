@@ -105,19 +105,17 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      var results = [];
 
       // console.log(this.rows() instanceof Board);
 
       for (var i = 0; i < this.rows().length; i++) {
-        results.push(this.hasRowConflictAt(i));
+        // results.push(this.hasRowConflictAt(i));
+        if (this.hasRowConflictAt(i)) {
+          return true;
+        }  
       }
 
-      if (results.indexOf(true) >= 0) {
-        return true;
-      } else {
-        return false; 
-      }
+      return false;
     },
 
 
