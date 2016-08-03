@@ -152,16 +152,13 @@
     hasAnyColConflicts: function() {
       // call hasColConflictAt from i = 0 to matrix length
       // store results
-      var results = [];
       for (var i = 0; i < this.rows().length; i++) {
-        results.push(this.hasColConflictAt(i));
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
       }
 
-      if (results.indexOf(true) >= 0) {
-        return true;
-      } else {
-        return false; 
-      }
+      return false;
     },
 
 
