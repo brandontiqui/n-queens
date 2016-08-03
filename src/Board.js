@@ -127,12 +127,43 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      // iterate over rows
+      var rows = this.rows();
+
+      // iterate over value at colIndex of each row
+      var count = 0;
+      rows.forEach(function(row) {
+        // if 1 is found, increment count
+        if (row[colIndex] === 1) {
+          console.log('in');
+          count++;
+        }
+      });
+
+      // if totalCount > 1, then return true
+
+      if (count > 1) {
+        return true;
+      } else {
+        // else false
+        return false;
+      }
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      // call hasColConflictAt from i = 0 to matrix length
+      // store results
+      var results = [];
+      for (var i = 0; i < this.rows().length; i++) {
+        results.push(this.hasColConflictAt(i));
+      }
+
+      if (results.indexOf(true) >= 0) {
+        return true;
+      } else {
+        return false; 
+      }
     },
 
 
