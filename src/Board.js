@@ -83,14 +83,9 @@
       var result = false;
 
       var targetRow = this.rows()[rowIndex];
-      // console.log(rows[0][0]);
-
-      // console.log(targetRow);
-
       var count = 0;
       targetRow.forEach(function(value) {
         if (value === 1) {
-          // console.log('in');
           count++;
         }
       });
@@ -100,21 +95,15 @@
       }
 
       return result;
-      // return false; // fixme
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-
-      // console.log(this.rows() instanceof Board);
-
       for (var i = 0; i < this.rows().length; i++) {
-        // results.push(this.hasRowConflictAt(i));
         if (this.hasRowConflictAt(i)) {
           return true;
         }  
       }
-
       return false;
     },
 
@@ -131,9 +120,7 @@
       // iterate over value at colIndex of each row
       var count = 0;
       rows.forEach(function(row) {
-        // if 1 is found, increment count
         if (row[colIndex] === 1) {
-          console.log('in');
           count++;
         }
       });
